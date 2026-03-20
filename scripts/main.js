@@ -10,6 +10,7 @@ const metaData = {
     stylessheets: [
         "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap",
         "../styles/root.css",
+        "../styles/topbar.css",
     ],
     preconnect: [
         "https://fonts.googleapis.com",

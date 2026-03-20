@@ -40,3 +40,48 @@ body {
   color: var(--text);
   min-height: 100vh;
 }
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app-container {
+  width: min(1200px, 94vw);
+  margin: 28px auto;
+}
+
+button {
+  font: inherit;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #fff;
+}
