@@ -1,4 +1,8 @@
+import { globalEventListeners } from "./functions/gloableEventListeners.js";
+import { loadStore } from "./functions/loadStore.js";
+import { applyTheme } from "./helper.js";
 import { setMetaData } from "./ui/headMetaData.js";
+import { renderBoard } from "./ui/renderBoard.js";
 import { rootLayout } from "./ui/rootLayout.js";
 
 const metaData = {
@@ -22,6 +26,9 @@ const metaData = {
 
 window.addEventListener('DOMContentLoaded', () => {
     setMetaData(metaData);
+    loadStore();
+    applyTheme();
+    globalEventListeners();
 });
 
 // -------------------------------------------- Start Root Layout --------------------------------------------

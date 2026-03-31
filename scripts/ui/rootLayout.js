@@ -10,7 +10,7 @@ export function rootLayout() {
                 controls()
             ]),
             el('main', { class: 'main' }, [
-
+                el('section', { id: "board", class: 'board', 'aria-label': 'Kanban Board', 'aria-live': 'polite' })
             ])
         ])
     ]);
