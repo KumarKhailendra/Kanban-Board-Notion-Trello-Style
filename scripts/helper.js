@@ -38,4 +38,11 @@ const escapeHTML = (value) => {
         .replaceAll(/'/g, '&#39;');
 }
 
-export { el, applyTheme, uid, escapeHTML };
+const formatDate = (dateStr) => {
+    if (!dateStr) return 'No due date';
+    const date = new Date(`${dateStr}T00:00:00`); // Ensure it's treated as local date
+    if (isNaN(date)) return 'Invalid date';
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+export { el, applyTheme, uid, escapeHTML, formatDate };
