@@ -13,8 +13,10 @@ const metaData = {
     icon16: "https://img.icons8.com/external-flat-design-circle/64/external-Todo-List-business-flat-design-circle.png",
     stylessheets: [
         "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap",
-        "../styles/root.css",
-        "../styles/topbar.css",
+        "./styles/root.css",
+        "./styles/topbar.css",
+        "./styles/boardColumn.css",
+        "./styles/boardTask.css",
     ],
     preconnect: [
         "https://fonts.googleapis.com",
@@ -28,6 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setMetaData(metaData);
     loadStore();
     applyTheme();
+    renderBoard();
     globalEventListeners();
 });
 

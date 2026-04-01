@@ -3,3 +3,46 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 14px;
 }
+
+.column {
+    background: color-mix(in hsl, var(--card) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    min-height: 260px;
+    backdrop-filter: blur(6px);
+}
+
+.column.drag-over {
+    outline: 2px dashed var(--primary);
+    outline-offset: -4px;
+}
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.column-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.column-title {
+    margin: 0;
+    font-size: 1.05em;
+}
+
+.column-count {
+    font-size: 0.85em;
+    color: var(--muted);
+}
