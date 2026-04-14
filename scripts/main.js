@@ -17,6 +17,7 @@ const metaData = {
         "./styles/topbar.css",
         "./styles/boardColumn.css",
         "./styles/boardTask.css",
+        "./styles/modal.css",
     ],
     preconnect: [
         "https://fonts.googleapis.com",
