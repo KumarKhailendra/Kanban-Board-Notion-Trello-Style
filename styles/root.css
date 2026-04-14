@@ -51,8 +51,22 @@ h1 {
   margin: 28px auto;
 }
 
+input, 
+select, 
+textarea,
 button {
   font: inherit;
+}
+
+input, 
+select, 
+textarea {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 
 .btn {
@@ -84,4 +98,8 @@ button {
 .btn-danger {
   background-color: var(--danger);
   color: #fff;
+}
+
+.hidden {
+    display: none;
 }

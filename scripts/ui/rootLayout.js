@@ -1,4 +1,5 @@
 import { el } from "../helper.js";
+import { modal } from "./modal/index.js";
 import { controls } from "./topbar/controls.js";
 import { logo } from "./topbar/logo.js";
 
@@ -12,6 +13,7 @@ export function rootLayout() {
             el('main', { class: 'main' }, [
                 el('section', { id: "board", class: 'board', 'aria-label': 'Kanban Board', 'aria-live': 'polite' })
             ])
-        ])
+        ]),
+        modal()
     ]);
 }
