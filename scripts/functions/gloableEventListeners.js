@@ -11,6 +11,8 @@ export function globalEventListeners() {
     const boardEl = getElement("board");
     const closeModalBtn = getElement("closeModalBtn");
     const addColumnBtn = getElement("addColumnBtn");
+    const searchInput = getElement("searchInput");
+    const priorityFilter = getElement("priorityFilter");
     const {
         taskModal,
         taskForm,
@@ -29,6 +31,18 @@ export function globalEventListeners() {
         store.theme = store.theme === 'dark' ? 'light' : 'dark';
         applyTheme();
         saveStore();
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        store.filters.search = e.target.value;
+        saveStore();
+        renderBoard();
+    });
+
+    priorityFilter.addEventListener('change', (e) => {
+        store.filters.priority = e.target.value;
+        saveStore();
+        renderBoard();
     });
 
     closeModalBtn.addEventListener("click", closeModal);

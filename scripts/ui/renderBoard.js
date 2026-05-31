@@ -1,4 +1,5 @@
 import { getStore } from "../data/store.js";
+import { dndEventListeners } from "../functions/DnDEventListeners.js";
 import { visibleTasksInColumn } from "../functions/taskFunctions.js";
 import { el, escapeHTML, formatDate } from "../helper.js";
 
@@ -55,4 +56,5 @@ export function renderBoard() {
         const boardArticle = el('article', { class: 'column', 'data-column-id': column.id }, [columnHeader, taskList]);
         board.appendChild(boardArticle);
     });
+    dndEventListeners();
 }
