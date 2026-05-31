@@ -6,6 +6,14 @@ export const getElement = (id) => {
   return el;
 };
 
+export const getAllElements = (selector) => {
+  const elements = document.querySelectorAll(selector);
+  if (elements.length === 0) {
+    console.warn(`Elements with selector "${selector}" not found`);
+  }
+  return elements;
+};
+
 export const getModalElements = () => ({
     taskModal: getElement("taskModal"),
     taskForm: getElement("taskForm"),

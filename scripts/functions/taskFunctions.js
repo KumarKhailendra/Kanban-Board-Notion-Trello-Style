@@ -74,3 +74,49 @@ export function deleteTask(taskId) {
   store.tasks.splice(index, 1);
   normalizeColumnOrder(store.tasks[index].columnId);
 }
+
+export function moveTask(taskId, targetColumnId, beforeTaskId = null) {
+  const store = getStore();
+  const task = store.tasks.find(t => t.id === taskId);
+  if (!task) return;
+
+  const sourceColumnId = task.columnId;
+  task.columnId = targetColumnId;
+
+  const targetTasks = allTasksInColumn(targetColumnId).filter(t => t.id !== taskId);
+  let insertIndex = targetTasks.length; // default to end of list
+
+  if (beforeTaskId) {
+    const beforeTaskIndex = targetTasks.findIndex(t => t.id === beforeTaskId);
+    if (beforeTaskIndex !== -1) {
+      insertIndex = beforeTaskIndex;
+    }
+  }
+
+  targetTasks.splice(insertIndex, 0, task);
+
+  // Reassign order values
+  targetTasks.forEach((t, index) => {
+    t.order = (index + 1) * 1000;
+  });
+
+  // If moving within the same column, we need to normalize the source column as well
+  if (sourceColumnId !== targetColumnId) {
+    normalizeColumnOrder(sourceColumnId);
+  }
+}
+
+export function getDragAfterElement(listEl, y) {
+  const cards = [...listEl.querySelectorAll('.task-card:not(.dragging)')];
+
+  return cards.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+}
