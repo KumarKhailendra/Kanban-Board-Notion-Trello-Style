@@ -9,6 +9,9 @@ export function controls() {
             el('option', { value: 'medium', text: 'Medium Priority' }, []),
             el('option', { value: 'high', text: 'High Priority' }, []),
         ]),
+        el('button', { id: 'exportBtn', class: 'btn btn-secondary', text: 'Export JSON', 'aria-label': 'Export the current board data as JSON' }),
+        el('button', { id: 'importBtn', class: 'btn btn-secondary', text: 'Import JSON', 'aria-label': 'Import board data from a JSON file' }),
+        el('input', { id: 'importFileInput', type: 'file', accept: 'application/json', class: 'hidden', 'aria-label': 'Select a JSON file to import board data' }),
         el('button', { id: 'addColumnBtn', class: 'btn btn-primary', text: '+ Add Column', 'aria-label': 'Add a new column to the board' }),
         el('button', { id: 'themeToggleBtn', class: 'btn btn-secondary', text: 'Toggle Theme', 'aria-label': 'Toggle Light/Dark Theme' }),
     ])

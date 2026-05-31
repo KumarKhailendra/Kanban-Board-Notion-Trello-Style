@@ -3,6 +3,7 @@ import { applyTheme } from "../helper.js";
 import { renderBoard } from "../ui/renderBoard.js";
 import { addColumn, deleteColumn, renameColumn } from "./columnFunctions.js";
 import { getElement, getModalElements } from "./getElements.js";
+import { exportBoardData, importBoardData } from "./importExportData.js";
 import { closeModal, openModal } from "./modal.js";
 import { addTask, deleteTask, updateTask } from "./taskFunctions.js";
 const store = getStore();
@@ -13,6 +14,9 @@ export function globalEventListeners() {
     const addColumnBtn = getElement("addColumnBtn");
     const searchInput = getElement("searchInput");
     const priorityFilter = getElement("priorityFilter");
+    const importBtn = getElement("importBtn");
+    const exportBtn = getElement("exportBtn");
+    const importFileInput = getElement("importFileInput");
     const {
         taskModal,
         taskForm,
@@ -129,4 +133,17 @@ export function globalEventListeners() {
     });
 
     addColumnBtn.addEventListener("click", addColumn);
+
+    exportBtn.addEventListener("click", exportBoardData);
+
+    importBtn.addEventListener("click", () => importFileInput.click());
+
+    importFileInput.addEventListener("change", async (e) => {
+        const [file] = e.target.files;
+        if (!file) return;
+
+        await importBoardData(file);
+        importFileInput.value = "";
+    });
+
 }
