@@ -1,6 +1,7 @@
 import { getStore, saveStore } from "../data/store.js";
 import { applyTheme } from "../helper.js";
 import { renderBoard } from "../ui/renderBoard.js";
+import { addColumn, deleteColumn, renameColumn } from "./columnFunctions.js";
 import { getElement, getModalElements } from "./getElements.js";
 import { closeModal, openModal } from "./modal.js";
 import { addTask, deleteTask, updateTask } from "./taskFunctions.js";
@@ -9,6 +10,7 @@ const store = getStore();
 export function globalEventListeners() {
     const boardEl = getElement("board");
     const closeModalBtn = getElement("closeModalBtn");
+    const addColumnBtn = getElement("addColumnBtn");
     const {
         taskModal,
         taskForm,
@@ -51,10 +53,19 @@ export function globalEventListeners() {
             return;
         }
 
-        // const renameColumnBtn = e.target.closest(".rename-column-btn");
-        // if (renameColumnBtn) {
+        const renameColumnBtn = e.target.closest(".rename-column-btn");
+        if (renameColumnBtn) {
+            const columnId = renameColumnBtn.dataset.columnId;
+            renameColumn(columnId);
+            return;
+        }
 
-        // }
+        const deleteColumnBtn = e.target.closest(".delete-column-btn");
+        if (deleteColumnBtn) {
+            const columnId = deleteColumnBtn.dataset.columnId;
+            deleteColumn(columnId);
+            return;
+        }
 
         const editTaskBtn = e.target.closest(".edit-task-btn");
         if (editTaskBtn) {
@@ -102,4 +113,6 @@ export function globalEventListeners() {
         renderBoard();
         closeModal();
     });
+
+    addColumnBtn.addEventListener("click", addColumn);
 }
