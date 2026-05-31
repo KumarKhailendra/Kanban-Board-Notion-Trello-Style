@@ -1,4 +1,5 @@
 import { getStore } from "./data/store.js";
+import { allTasksInColumn } from "./functions/taskFunctions.js";
 
 const el = (tag, attrs = {}, children = []) => {
     const element = tag !== '' ? document.createElement(tag) : document.createDocumentFragment();
@@ -45,4 +46,4 @@ const formatDate = (dateStr) => {
     return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-export { el, applyTheme, uid, escapeHTML, formatDate };
+export { el, applyTheme, uid, escapeHTML, formatDate,  };
