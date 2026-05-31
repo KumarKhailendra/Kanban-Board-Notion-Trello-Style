@@ -28,7 +28,7 @@ export function getNextOrder(columnId) {
   return tasks[tasks.length - 1].order + 1000;
 }
 
-const normalizeColumnOrder = (columnId) => {
+export const normalizeColumnOrder = (columnId) => {
     const tasks = allTasksInColumn(columnId);
     tasks.forEach((task, index) => {
         task.order = (index + 1) * 1000;
